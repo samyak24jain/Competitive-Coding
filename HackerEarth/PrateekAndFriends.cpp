@@ -10,35 +10,38 @@ using namespace std;
 int main() {
 	
 	int t,flag;
-	long long int n,x,i,sum;
-	
+	long long int n,x,i,j,sum;
+	sd(t);
 	while(t--) {
-	    sum = 0;
 	    flag = 0;
-	    scanf("%lld %lld", &n, &x);
+	    
+	    sl(n);sl(x);
 	    long long int cost[n];
 	    
 	    for(i=0;i<n;i++) {
 	        sl(cost[i]);
 	    }
-	    
+	
 	    for(i=0;i<n;i++) {
-	        sum += cost[i];
-	        if(sum == x)
-	        {
-	            flag = 1;
-	            break;
-	        } 
-	        else if(sum > x)      
-                continue;
-	        else 
-	            break;
+	        sum = 0;
+	        for(j=i;j<n;j++) {
+	            sum += cost[j];
+    	        if(sum == x)
+    	        {
+    	            flag = 1;
+    	            break;
+    	        } 
+    	        else if(sum > x)      
+                    break;
+	        }
+	        if(flag == 1)
+	        	break;
 	    }
 	    
 	    if(flag == 1)
-	        printf("YES");
+	        printf("YES\n");
 	    else
-	        printf("NO");
+	        printf("NO\n");
 	        
 	}
 	return 0;
